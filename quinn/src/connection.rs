@@ -994,7 +994,7 @@ impl State {
                     self.send_buffer.clear();
                     self.send_buffer.reserve(self.inner.current_mtu() as usize);
 
-                    tracing::info!("MAX DGRAMS: {max_datagrams}");
+                    //tracing::info!("MAX DGRAMS: {max_datagrams}");
 
                     match self
                         .inner
