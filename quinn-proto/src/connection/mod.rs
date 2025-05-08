@@ -457,7 +457,10 @@ impl Connection {
             //true => max_datagrams.min(10),
             true => max_datagrams,
         };
-        tracing::info!("max_datagrams: {max_datagrams}. gso: {}", self.config.enable_segmentation_offload);
+        if max_datagrams != 10 {
+            tracing::info!("max_datagrams: {max_datagrams}. gso: {}", self.config.enable_segmentation_offload);
+            panic!();
+        }
 
         let mut num_datagrams = 0;
         // Position in `buf` of the first byte of the current UDP datagram. When coalescing QUIC
