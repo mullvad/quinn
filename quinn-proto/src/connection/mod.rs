@@ -453,7 +453,9 @@ impl Connection {
         assert!(max_datagrams != 0);
         let max_datagrams = match self.config.enable_segmentation_offload {
             false => 1,
-            true => max_datagrams.min(10),
+            // fixes the perf regression:
+            //true => max_datagrams.min(10),
+            true => max_datagrams,
         };
 
         let mut num_datagrams = 0;
