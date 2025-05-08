@@ -459,7 +459,7 @@ impl Connection {
         };
         if max_datagrams != 10 {
             tracing::info!("max_datagrams: {max_datagrams}. gso: {}", self.config.enable_segmentation_offload);
-            tracing::info!("backtrace: {:?}", std::backtrace::Backtrace::capture());
+            tracing::info!("backtrace: {:?}", std::backtrace::Backtrace::force_capture());
             tracing::info!("-------------");
             std::process::exit(0);
         }
